@@ -1,5 +1,4 @@
 import 'package:shop_app_clean_arch/core/utils/api_service.dart';
-import 'package:shop_app_clean_arch/core/utils/constants.dart';
 import 'package:shop_app_clean_arch/features/product/data/models/product_model.dart';
 import 'package:shop_app_clean_arch/features/product/domain/entities/product_entitiy.dart';
 
