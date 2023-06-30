@@ -12,7 +12,7 @@ class ProductInitial extends ProductState {}
 class LoadingProductState extends ProductState {}
 
 class LoadedProductState extends ProductState {
-  final List<ProductModel> products;
+  final List<ProductEntity> products;
   const LoadedProductState({required this.products});
   @override
   List<Object> get props => [products];

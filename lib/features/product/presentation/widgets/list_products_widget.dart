@@ -19,6 +19,7 @@ class ListProductsWidget extends StatelessWidget {
 }
 
 Widget _productItem({required var model}) {
+  print(model);
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(4),

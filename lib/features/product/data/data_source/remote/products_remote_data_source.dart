@@ -1,42 +1,31 @@
-import 'dart:convert';
-
-import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
+import 'package:shop_app_clean_arch/core/utils/api_service.dart';
 import 'package:shop_app_clean_arch/core/utils/constants.dart';
 import 'package:shop_app_clean_arch/features/product/data/models/product_model.dart';
+import 'package:shop_app_clean_arch/features/product/domain/entities/product_entitiy.dart';
 
 abstract class ProductsRemoteDataSource {
-  Future<List<ProductModel>> getAllProducts();
+  Future<List<ProductEntity>> getAllProducts();
 }
 
-String apiUrl = Constants.baseUrl;
-
 class ProductsRemoteImpWithDio implements ProductsRemoteDataSource {
-  final Dio dio;
+  final ApiService apiService;
 
-  ProductsRemoteImpWithDio({required this.dio});
+  ProductsRemoteImpWithDio({required this.apiService});
 
   @override
-  Future<List<ProductModel>> getAllProducts() async {
-    final response = await dio.get(
-      '$apiUrl${Constants.products}',
-      options: Options(
-        headers: {
-          "Content-Type": "application/json",
-        },
-      ),
-    );
+  Future<List<ProductEntity>> getAllProducts() async {
+    var data = await apiService.get();
+    print('************** ProductsRemoteImpWithDio START ********************');
+    print(data);
 
-    if (response.statusCode == 200) {
-      final List decodedJson = json.decode(response.data) as List;
-      final List<ProductModel> productList = decodedJson
-          .map<ProductModel>((e) => ProductModel.fromJson(e))
-          .toList();
-      if (kDebugMode) {
-        print(productList);
-      }
-      return productList;
+    
+    List<ProductEntity> products = [];
+
+    for (var productMap in data['data']['products']) {
+      products.add(ProductModel.fromJson(productMap));
     }
-    return [];
+        print('************** ProductsRemoteImpWithDio END ********************');
+
+    return products;
   }
 }

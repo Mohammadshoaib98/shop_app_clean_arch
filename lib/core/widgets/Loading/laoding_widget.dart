@@ -5,12 +5,16 @@ class LoadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(vertical: 20),
-      child: SizedBox(
-        height: 30,
-        width: 30,
-        child: CircularProgressIndicator(),
+    return const Scaffold(
+      body:  Padding(
+        padding: EdgeInsets.symmetric(vertical: 20),
+        child: Center(
+          child: SizedBox(
+            height: 30,
+            width: 30,
+            child: CircularProgressIndicator(),
+          ),
+        ),
       ),
     );
   }

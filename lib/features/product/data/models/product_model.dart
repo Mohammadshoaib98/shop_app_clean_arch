@@ -21,7 +21,6 @@ class ProductModel extends ProductEntity {
 
             
   factory ProductModel.fromJson(Map<String, dynamic> data) {
-    List<ProductModel> product = [];
     if (data['name'] != null) {}
     return ProductModel(
       id: data['id'].toInt(),

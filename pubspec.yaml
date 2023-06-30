@@ -17,7 +17,6 @@ dependencies:
   shared_preferences: ^2.1.2
   equatable: ^2.0.5
   internet_connection_checker: ^1.0.0+1
-  http: 
   bloc: ^8.1.2
   dio: ^5.2.1+1
   dartz: ^0.10.1
