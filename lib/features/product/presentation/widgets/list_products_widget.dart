@@ -10,7 +10,7 @@ class ListProductsWidget extends StatelessWidget {
     return ListView.separated(
       itemCount: products.length,
       itemBuilder: (context, index) {
-        return _productItem(model: products);
+        return _productItem(model: products[index]);
       },
       separatorBuilder: (BuildContext context, int index) =>
           const Divider(thickness: 1),
@@ -29,8 +29,12 @@ Widget _productItem({required var model}) {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Expanded(
-          child: Image.network(
+
+
+          SizedBox(
+           height: 250,
+            child:model.image==null ?const Text('No Exist image !'):
+          Image.network(
             model.image!,
             fit: BoxFit.fill,
             width: double.infinity,
@@ -79,8 +83,8 @@ Widget _productItem({required var model}) {
             ),
             GestureDetector(
               child: const Icon(
-                Icons.shopping_basket,
-                size: 20,
+                Icons.shopping_cart,
+                size: 30,
                 //  color: cubit.favoritesID.contains(model.id.toString())? Colors.red : Colors.grey,
               ),
               onTap: () {

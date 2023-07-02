@@ -10,7 +10,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setupDependencies();
   Bloc.observer = MyBlocObserver();
-
   runApp(const MyApp());
 }
 
@@ -20,21 +19,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers: [
-          BlocProvider<ProductBloc>(
-            create: (context) => ProductBloc(
+      providers: [
+        BlocProvider<ProductBloc>(
+          create: (context) => ProductBloc(
             getAllProductsUseCase: getIt<GetAllProductsUseCase>(),
           )..add(
               GetAllProductEvent(),
             ),
-          ),
-        ],
-        child: MaterialApp(
-          title: 'Shop App',
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
-          home: const ProductsPage(),
-        ));
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Shop App',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const ProductsPage(),
+      ),
+    );
   }
 }

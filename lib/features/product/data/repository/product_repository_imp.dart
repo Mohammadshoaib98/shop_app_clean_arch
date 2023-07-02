@@ -21,7 +21,7 @@ class ProductRepositoryImp extends ProductRepository {
         print("************* $remote **************** ");
 
         print("************* ProductRepositoryImp END**************** ");
-        right(remote);
+       return right(remote);
       } on ServerException {
         return left(ServerFailure());
       } catch (e) {
